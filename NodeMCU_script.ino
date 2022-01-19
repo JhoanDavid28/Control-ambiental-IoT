@@ -44,4 +44,14 @@ void setup(){
     rest.set_id("0");
     rest.set_name("sensor_nodemcu");
 
+//Conectar al WiFi
+    WiFi.begin(ssid, password);
+    while (WiFi.status() != WL_CONNECTED){  // WL_CONNECTED: asignado cuando se conecta a una red WiFi
+        delay(500); //0,5 segundos
+        Serial.print(".");
+    }
+    Serial.println("");
+    Serial.println("WiFi Conectado!");
+
+
 }
