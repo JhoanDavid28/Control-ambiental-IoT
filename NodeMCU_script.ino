@@ -24,5 +24,6 @@ const char* password = "Tu contraseña";
 // Definir puerto que debe estar escuchando la apí
 #define LISTEN_PORT 80
 
-
+//Creación de la instancia del servidor
+WiFiServer server(LISTEN_PORT);
 
