@@ -17,5 +17,9 @@ DHT dht(DHTPIN, DHTTYPE);
 // inicializamos la API
 aREST rest = aREST();
 
+// ingresamos credenciales de wifi
+const char* ssid = "Tu Wifi";
+const char* password = "Tu contraseña";
+
 
 
