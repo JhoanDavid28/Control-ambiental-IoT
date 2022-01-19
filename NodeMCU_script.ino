@@ -27,3 +27,7 @@ const char* password = "Tu contraseña";
 //Creación de la instancia del servidor
 WiFiServer server(LISTEN_PORT);
 
+//Variables API
+float mq, humidity, temperature;
+
+
