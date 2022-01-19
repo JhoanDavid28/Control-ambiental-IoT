@@ -30,4 +30,8 @@ WiFiServer server(LISTEN_PORT);
 //Variables API
 float mq, humidity, temperature;
 
-
+//ejecucion, y script para probar conección
+void setup(){
+  Serial.begin(9600); //ambos sensores funcionan a 9600 baudios
+  dht.begin();//iniciamos el sensor DHT22
+ 
