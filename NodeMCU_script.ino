@@ -68,7 +68,11 @@ void loop(){
     humidity = dht.readHumidity(); //RH (humedad relativa 0% -100%(punto de rocio) ) 
     temperature = dht.readTemperature(); //0 - 100°C
 
-
+//llamadas de Api REST
+    WiFiClient client = server.available();
+    if (!client) {
+    return;
+    }
 
 
 }
