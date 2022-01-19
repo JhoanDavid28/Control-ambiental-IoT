@@ -21,6 +21,8 @@ aREST rest = aREST();
 const char* ssid = "Tu Wifi";
 const char* password = "Tu contraseña";
 
+// Definir puerto que debe estar escuchando la apí
+#define LISTEN_PORT 80
 
 
 
