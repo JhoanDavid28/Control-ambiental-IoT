@@ -32,6 +32,16 @@ float mq, humidity, temperature;
 
 //ejecucion, y script para probar conección
 void setup(){
-  Serial.begin(9600); //ambos sensores funcionan a 9600 baudios
-  dht.begin();//iniciamos el sensor DHT22
- 
+    Serial.begin(9600); //ambos sensores funcionan a 9600 baudios
+    dht.begin();//iniciamos el sensor DHT22
+
+//inicialicacion de variables para la API (se genera el formato JSON)
+    rest.variable("temperature",&temperature);
+    rest.variable("humidity",&humidity);
+    rest.variable("contaminacion",&mq);
+
+//Name ID
+    rest.set_id("0");
+    rest.set_name("sensor_nodemcu");
+
+}
