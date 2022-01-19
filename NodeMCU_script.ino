@@ -53,5 +53,10 @@ void setup(){
     Serial.println("");
     Serial.println("WiFi Conectado!");
 
+//Start Server
+    server.begin();
+    Serial.println("Servidor Iniciado");
 
+//visualizacion de  IP
+    Serial.println(WiFi.localIP());
 }
