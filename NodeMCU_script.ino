@@ -11,4 +11,8 @@
 #define DHTTYPE DHT22
 #define MQ A0
 
+// inicializamos las entradas del sensor DHT
+DHT dht(DHTPIN, DHTTYPE);
+
+
 
