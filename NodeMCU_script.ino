@@ -14,5 +14,8 @@
 // inicializamos las entradas del sensor DHT
 DHT dht(DHTPIN, DHTTYPE);
 
+// inicializamos la API
+aREST rest = aREST();
+
 
 
