@@ -74,5 +74,9 @@ void loop(){
     return;
     }
 
+    while(!client.available()){
+    delay(1);
+    }
+    rest.handle(client);
 
 }
