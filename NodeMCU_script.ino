@@ -53,10 +53,22 @@ void setup(){
     Serial.println("");
     Serial.println("WiFi Conectado!");
 
-//Start Server
+//Empezar Server
     server.begin();
     Serial.println("Servidor Iniciado");
 
 //visualizacion de  IP
     Serial.println(WiFi.localIP());
+}
+
+void loop(){
+  //sensado de 1s
+    delay(100);
+    mq = analogRead(MQ); //MQ135 ppm(particulas por millón)
+    humidity = dht.readHumidity(); //RH (humedad relativa 0% -100%(punto de rocio) ) 
+    temperature = dht.readTemperature(); //0 - 100°C
+
+
+
+
 }
