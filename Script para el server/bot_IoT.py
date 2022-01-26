@@ -11,23 +11,31 @@ CONSUMER_SECRET=''
 ACCESS_TOKEN=''
 ACCESS_TOKEN_SECRET=''
 
-def consultaDeDatos():
-    # Consulta los datos del sensor en la IP del Wemos
-    response = requests.get('http://192.168.0.24:80')
-    response2 = requests.get('http://192.168.0.27:80')
+#IP de los sensores en red local
+IP_SENSOR_OUTDOOR = 'http://192.168.0.24:80'
+IP_SENSOR_INDOOR = 'http://192.168.0.27:80'
 
-    # Convierte la respuesta del servidor de Wemos en un diccionario de Python
+def obtenerDatosDeSensorOutdoor():
+    # Consulta los datos del sensor en la IP del Wemos
+    response = requests.get(IP_SENSOR_OUTDOOR)
+    # Convierte la respuesta del servidor de NodeMCU en un diccionario de Python
     sensor_data = response.json()
-    sensor_data2 = response2.json()
     
     temperature = sensor_data['variables']['temperature']
-
     humidity = sensor_data['variables']['humidity']
     pollution = sensor_data['variables']['contaminacion']
 
-    temperature2 = sensor_data2['variables']['temperature']
-    humidity2 = sensor_data2['variables']['humidity']
-    pollution2 = sensor_data2['variables']['contaminacion']
+
+def obtenerDatosDeSensorIndoor():
+    # Consulta los datos del sensor en la IP del Wemos
+    response = requests.get(IP_SENSOR_OUTDOOR)
+
+    # Convierte la respuesta del servidor de NodeMCU en un diccionario de Python
+    sensor_data = response.json()
+    
+    temperature = sensor_data['variables']['temperature']
+    humidity = sensor_data['variables']['humidity']
+    pollution = sensor_data['variables']['contaminacion']
 
 
 def guardarDatosOutdoor():
