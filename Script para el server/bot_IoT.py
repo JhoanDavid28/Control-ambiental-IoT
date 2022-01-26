@@ -29,6 +29,20 @@ def consultaDeDatos():
     humidity2 = sensor_data2['variables']['humidity']
     pollution2 = sensor_data2['variables']['contaminacion']
 
+
+def guardarDatosOutdoor():
+    sensor_outdoor = "C:\\Users\\" + os.getlogin() + "\\Desktop\\"
+    a = open(sensor_outdoor + "Datos obtenidos de NodeMCU exterior.txt", "w")
+    a.write("\n".join(sensor_outdoor))
+    a.close()
+
+def guardarDatosIndoor():
+    sensor_indoor= "C:\\Users\\" + os.getlogin() + "\\Desktop\\"
+    a = open(sensor_indoor + "Datos obtenidos de NodeMCU interior.txt", "w")
+    a.write("\n".join(sensor_indoor))
+    a.close()
+
+
 def main():
     pass
 
