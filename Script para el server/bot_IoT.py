@@ -52,7 +52,8 @@ def guardarDatosIndoor():
 
 
 def main():
-    pass
+    obtenerDatosDeSensorIndoor()
+    obtenerDatosDeSensorOutdoor()
 
 
 if __name__ == "__main__":
