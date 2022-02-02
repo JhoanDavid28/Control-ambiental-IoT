@@ -21,6 +21,8 @@ def autenticacionDeLlaves():
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth, wait_on_rate_limit=True)
+    return api
+
 
 def enviarTweet(temperatura, humedad, contaminacion, fecha, hora):
     api.update_status('Soy un bot creado para hacer mediciones \n La temperatura es: {0} ℃ \n La humedad es: {1} % RH \n La concentración es: {2} % PPM \n Fecha: {3}, Hora: {4}' .format(temperatura, humedad, contaminacion, fecha, hora))
