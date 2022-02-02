@@ -30,9 +30,9 @@ def main():
         print(sensor_data)
 
         #obtencion de variables para twiteer
-        temperature = data['dic1']['variables']['temperature']
-        humidity = data['dic1']['variables']['humidity']
-        pollution = data['dic1']['variables']['contaminacion']
+        temperature = sensor_data['variables']['temperature']
+        humidity = sensor_data['variables']['humidity']
+        pollution = sensor_data['variables']['contaminacion']
 
         response2 = requests.get(IP_SENSOR_INDOOR)
         sensor_data2 = response2.json()
