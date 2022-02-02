@@ -16,11 +16,18 @@ IP_SENSOR_INDOOR = 'http://192.168.101.36:80/'
 
 mediciones = {}
 mediciones2 = {}
-a = 0
-def main():
+
+def autenticacionDeLlaves():
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth, wait_on_rate_limit=True)
+
+def enviarTweet(temperatura, humedad, contaminacion, fecha, hora):
+    api.update_status('Soy un bot creado para hacer mediciones \n La temperatura es: {0} ℃ \n La humedad es: {1} % RH \n La concentración es: {2} % PPM \n Fecha: {3}, Hora: {4}' .format(temperatura, humedad, contaminacion, fecha, hora))
+
+def main():
+    a = 0
+    autenticacionDeLlaves()
     while True:
         time.sleep(10)
         # Consulta los datos del sensor en la IP del NodeMCU
@@ -30,9 +37,10 @@ def main():
         print(sensor_data)
 
         #obtencion de variables para twiteer
-        temperature = sensor_data['variables']['temperature']
-        humidity = sensor_data['variables']['humidity']
-        pollution = sensor_data['variables']['contaminacion']
+        temperatura = sensor_data['variables']['temperature']
+        humedad = sensor_data['variables']['humidity']
+        contaminacion = sensor_data['variables']['contaminacion']
+        print(temperatura, humedad, contaminacion)
 
         response2 = requests.get(IP_SENSOR_INDOOR)
         sensor_data2 = response2.json()
