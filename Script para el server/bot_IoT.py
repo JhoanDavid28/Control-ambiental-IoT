@@ -18,7 +18,7 @@ IP_SENSOR_INDOOR = 'http://192.168.101.36:80/'
 mediciones = {}
 mediciones2 = {}
 a = 0
-def obtenerDatosDeSensores():
+def main():
     while True:
         time.sleep(10)
         # Consulta los datos del sensor en la IP del
@@ -49,13 +49,6 @@ def obtenerDatosDeSensores():
         tf.close()
 
         a += 1
-
-
-
-
-
-def main():
-    obtenerDatosDeSensores()
 
 
 if __name__ == "__main__":
