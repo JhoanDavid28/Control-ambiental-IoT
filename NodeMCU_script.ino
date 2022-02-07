@@ -30,7 +30,7 @@ WiFiServer server(LISTEN_PORT);
 //Variables API
 float mq, humidity, temperature;
 
-//ejecucion, y script para probar conección
+//ejecucion, y script para probar conexión
 void setup(){
     Serial.begin(9600); //ambos sensores funcionan a 9600 baudios
     dht.begin();//iniciamos el sensor DHT22
@@ -42,7 +42,7 @@ void setup(){
 
 //Name ID
     rest.set_id("0");
-    rest.set_name("sensor_nodemcu");
+    rest.set_name("sensor_outdoor");
 
 //Conectar al WiFi
     WiFi.begin(ssid, password);

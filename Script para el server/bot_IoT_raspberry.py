@@ -33,10 +33,10 @@ def obtencionYEnvioDeVariables(api, sensor_data, ahora):
     contaminacion = sensor_data['variables']['contaminacion']
     hora = ahora.strftime('%H:%M:%S')
     fecha = ahora.strftime('%d/%m/%Y')
-    print(temperatura, humedad, contaminacion, hora, fecha)
+    # print(temperatura, humedad, contaminacion, hora, fecha)
     api.update_status(
-        'Soy un bot creado para hacer mediciones \n La temperatura es: {0} ℃ \n La humedad es: {1} % RH \n La '
-        'concentración es: {2} % PPM \n Fecha: {3}, Hora: {4}'.format(
+        'Soy un bot creado para hacer mediciones en la ciudad de Pelileo Centro \n La temperatura es: {0} ℃ \n La '
+        'humedad es: {1} % HR \n La concentración de gases es: {2} ppm \n Fecha: {3}, Hora: {4}'.format(
             temperatura, humedad, contaminacion, fecha, hora))
 
 
@@ -44,16 +44,16 @@ def main():
     a = 0
     api = autenticacionDeLlaves()
     while True:
-        time.sleep(1800)
+        time.sleep(10)
         # Consulta los datos del sensor en la IP del NodeMCU
         response = requests.get(IP_SENSOR_OUTDOOR)
         # Convierte la respuesta del servidor de NodeMCU en un diccionario de Python
         sensor_data = response.json()
-        print(sensor_data)
+        # print(sensor_data)
 
         response2 = requests.get(IP_SENSOR_INDOOR)
         sensor_data2 = response2.json()
-        print(sensor_data2)
+        # print(sensor_data2)
 
         ahora = datetime.datetime.now()
         sensor_data["fecha"] = ahora.strftime('%d/%m/%Y')
@@ -63,19 +63,19 @@ def main():
         sensor_data2["hora"] = ahora.strftime('%H:%M:%S')
 
         # almacenamiento de las mediciones
-        tf = open("myDictionary_outdoor.json", "w")
-        mediciones['dic' + str(a)] = sensor_data
+        tf = open("mediciones_outdoor.json", "w")
+        mediciones['med' + str(a)] = sensor_data
         json.dump(mediciones, tf)
         tf.close()
 
-        tf2 = open("myDictionary2_indoor.json", "w")
-        mediciones2['dic' + str(a)] = sensor_data2
+        tf2 = open("mediciones_indoor.json", "w")
+        mediciones2['med' + str(a)] = sensor_data2
         json.dump(mediciones2, tf2)
-        tf.close()
+        tf2.close()
 
         # obtencion de datos para tweet
         obtencionYEnvioDeVariables(api, sensor_data, ahora)
-
+        time.sleep(1800)
         a += 1
 
 
